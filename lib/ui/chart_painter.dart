@@ -75,7 +75,7 @@ class ChartPainter extends CustomPainter {
           Offset(dp.dx, margin), Offset(dp.dx, margin + height), outlinePiant);
       canvas.drawCircle(dp, radius, dotPointFill);
       canvas.drawCircle(dp, radius, linePaint);
-      var dp1 = Offset(dp.dx, 25 * hr);
+      var dp1 = Offset(dp.dx, size.height-10);
       _drawTextCentered(canvas, dp1, x[i], textStyle, width);
     }
 

@@ -95,7 +95,7 @@ class _WeightGraphState extends State<WeightGraph> {
             ),
           ),
           Expanded(
-            child: GestureDetector(
+            child:_list.length>=3? GestureDetector(
               onScaleStart: (details) {
                 lastScaleUpdateDetails = null;
               },
@@ -123,6 +123,8 @@ class _WeightGraphState extends State<WeightGraph> {
                 painter: ChartPainter(_x ?? [], _y ?? [], _min ?? 0.0,
                     _max ?? 0.0, scale, xOffset),
               ),
+            ):Container(
+              child: Center(child: Text("Add 3 weight or more to draw a graph"),),
             ),
           ),
           SizedBox(
@@ -270,7 +272,10 @@ class _WeightGraphState extends State<WeightGraph> {
                 Icons.add,
                 color: AppColors.buttonTextColor,
               ),
-              onPressed: () => _addNewWeight(selectedWeight, selectedData),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _addNewWeight(selectedWeight, selectedData);
+              },
               style: OutlinedButton.styleFrom(
                   side: BorderSide.none,
                   backgroundColor: AppColors.buttonTextColor.withOpacity(0.2),
